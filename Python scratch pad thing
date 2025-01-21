@@ -1,0 +1,28 @@
+# Python Lab - Scratch Pad
+# Use this template to try some code... Use it as a scratch pad.
+# Remember To Copy Your Edited Code To Your GitHub
+# https://github.com/
+
+# Add Any Header Comments, Versioning & License
+# Add a Comment Here to describe/explain what you are doing 
+# What is the purpose of this code… Document It
+
+# Your Code Starts Here:
+# Include any Libraries
+# Declare Any Global Variables
+
+def main():
+    x=20
+    y=35
+    z=x*y
+    print(z)
+    e=z/10
+    q=e*3+69
+    big_Number= x + y * z + e + q
+    print(big_Number)
+    if(big_Number == 24869):
+        print('Very Big')
+    else:
+        print('Not huge')
+
+main()
