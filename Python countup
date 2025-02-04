@@ -1,0 +1,11 @@
+counter = 0
+def main():
+    print("Starting While Loop - Print Count Variable")
+
+while counter < 10:  # Loops while counter is less than 10
+    print(counter)  
+    counter += 1  # Increment the counter
+
+    
+
+main()
