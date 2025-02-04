@@ -1,0 +1,15 @@
+while True:
+    try:
+        user_input = int(input("Enter an integer between 0 and 9: "))
+        if 0 <= user_input <= 9:
+            break
+        else:
+            print("Please enter a number between 0 and 9.")
+    except ValueError:
+        print("Invalid input. Please enter an integer.")
+
+count = 0
+while count <= 10:
+    if count == user_input:
+        print(f"The User variable is equal to the count variable. User = {user_input}, Count variable = {count}")
+    count += 1
