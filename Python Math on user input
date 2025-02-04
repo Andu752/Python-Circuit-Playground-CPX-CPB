@@ -1,0 +1,16 @@
+while True:
+    try:
+        user_number = int(input("Enter an integer greater than 20: "))
+        if user_number > 20:
+            break
+        else:
+            print("Please enter a number greater than 20.")
+    except ValueError:
+        print("Invalid input. Please enter a valid integer.")
+
+count = 0
+while user_number > 1:
+    user_number //= 2  # Integer division
+    count += 1
+
+print(f"Loop executed {count} times.")
