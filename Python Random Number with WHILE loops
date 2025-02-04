@@ -1,0 +1,14 @@
+import random
+
+print("Starting Code Challenge")
+print("Getting Random Number")
+print("Starting While Loop - Test Random Number")
+
+while True:
+    num = random.randint(1, 10)
+    print(num)
+    if num == 10:  # Stopping condition
+        break
+
+print("Ending While Loop")
+print("Ending Code Challenge")
