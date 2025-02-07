@@ -1,0 +1,27 @@
+# Demonstrating Python built-in functions
+
+# Using abs() function to get the absolute value of a negative result
+x = (4 + 5) * -7
+absolute_value = abs(x)
+print("Absolute Value:", absolute_value)
+
+# Using bin() function to convert a decimal number to binary
+decimal_number = 25
+binary_value = bin(decimal_number)
+print("Binary Representation:", binary_value)
+
+# Using hex() function to convert a decimal number to hexadecimal
+hex_value = hex(decimal_number)
+print("Hexadecimal Representation:", hex_value)
+
+# Using chr() function to get the character corresponding to a Unicode value
+unicode_value = 65
+character = chr(unicode_value)
+print("Character Representation:", character)
+
+# Using round() function to round floating-point numbers
+floating_number = 7.456789
+rounded_value = round(floating_number)  # Rounds to the nearest integer
+rounded_two_digits = round(floating_number, 2)  # Rounds to 2 decimal places
+print("Rounded Value:", rounded_value)
+print("Rounded to 2 Digits:", rounded_two_digits)
