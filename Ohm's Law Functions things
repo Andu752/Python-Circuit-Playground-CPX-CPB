@@ -1,0 +1,21 @@
+# Get the hex value of 'Ω' using ord()
+omega_symbol = 'Ω'
+hex_value = hex(ord(omega_symbol))
+print(f"The hex value of '{omega_symbol}' is {hex_value}")
+
+# Ohm's Law: R = V / I
+# Given values
+volts = 5
+current = 20e-3  # 20mA converted to Amperes
+resistance = volts / current
+
+# Print result using chr() to get 'Ω' symbol
+print(f"A circuit with a voltage of {volts}V and a current of {current*1000:.0f}mA will require a resistor of {resistance:.0f}{chr(937)}")
+
+# Update program to take user input
+volts = float(input("Enter voltage (V): "))
+current = float(input("Enter current (mA): ")) * 1e-3  # Convert mA to A
+resistance = volts / current
+
+# Print result
+print(f"A circuit with a voltage of {volts}V and a current of {current*1000:.0f}mA will require a resistor of {resistance:.0f}{chr(937)}")
