@@ -1,3 +1,4 @@
+#This is the list Example, this code makes it so that it changes the time and is not descriptive
 lst = list()
 lst.append(183)
 lst.append("2:00 PM")
@@ -6,6 +7,7 @@ lst[1] = "3:00 PM"
 print(lst)
 print(lst[1])
 
+#This is the Dictionary Example, this code makes it descriptive when it changes the time
 math102 = dict()
 math102['course'] = 102
 math102['time'] = "2:00 PM"
