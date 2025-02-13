@@ -1,0 +1,12 @@
+def sum_and_avg(numbers):
+    if len(numbers) != 3:
+        raise ValueError("Tuple must contain exactly 3 numbers")
+    total = sum(numbers)
+    average = total / 3
+    return total, average
+
+# Example usage
+my_tuple = (2, 6, 42)
+(sum_result, avg_result) = sum_and_avg(my_tuple)
+print("Sum:", sum_result)
+print("Average:", avg_result)
