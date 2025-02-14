@@ -1,0 +1,28 @@
+# Define the makey_bot dictionary
+makey_bot = {
+    'wave_pattern': [45, 1, 90, 2, 135, 1],
+    'eyes_rgb_status': 1,
+    'rgb_eye_color_1': '#FF0000',
+    'rgb_eye_color_2': '#00FF00',
+    '7seg_value': 5,
+    'led_1_status': 1,
+    'led_1_blink': 0.5,
+    'led_2_status': 0,
+    'led_2_blink': 1.0,
+    'led_3_status': 1,
+    'led_3_blink': 0.3
+}
+
+# Print the dictionary
+print("Makey Bot Dictionary:")
+for key, value in makey_bot.items():
+    print(f"{key}: {value}")
+
+# Prompt the user for a key
+user_key = input("\nEnter a key to look up its value: ")
+
+# Validate and output the corresponding value if the key exists
+if user_key in makey_bot:
+    print(f"The value for '{user_key}' is: {makey_bot[user_key]}")
+else:
+    print("The entered key is not found in the dictionary.")
