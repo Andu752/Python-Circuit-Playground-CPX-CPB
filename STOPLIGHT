@@ -1,0 +1,50 @@
+from gpiozero import LED
+from time import sleep
+
+# Assign GPIO pins to LEDs (Modify based on your actual GPIO setup)
+stop_light = {
+    'red_LED': LED(17),   # Red LED on GPIO 17
+    'yellow_LED': LED(27), # Yellow LED on GPIO 27
+    'green_LED': LED(22)   # Green LED on GPIO 22
+}
+
+def test_stop_light():
+    """Test function to cycle through the stoplight LEDs."""
+    print("Testing Stop Light LEDs...")
+    for color, led in stop_light.items():
+        print(f"Turning ON {color}")
+        led.on()
+        sleep(1)  # Keep LED on for 1 second
+        print(f"Turning OFF {color}")
+        led.off()
+        sleep(0.5)  # Pause before next LED
+    print("Test Complete.")
+
+def stop_light_control(color):
+    """Controls the stoplight based on user input."""
+    if color in stop_light:
+        # Turn off all LEDs first
+        for led in stop_light.values():
+            led.off()
+        
+        # Turn on the selected LED
+        stop_light[color].on()
+        print(f"{color} is now ON")
+    else:
+        print("Invalid input. Please enter red_LED, yellow_LED, or green_LED.")
+
+def main():
+    """Main function to handle user input in a loop."""
+    while True:
+        user_input = input("Enter LED color (red_LED, yellow_LED, green_LED) or 'test' to test LEDs, 'exit' to quit: ").strip().lower()
+        
+        if user_input == 'exit':
+            print("Exiting program...")
+            break
+        elif user_input == 'test':
+            test_stop_light()
+        else:
+            stop_light_control(user_input)
+
+if __name__ == "__main__":
+    main()
