@@ -1,0 +1,45 @@
+from gpiozero import RGBLED
+from time import sleep
+
+eyes_RGBLEDs = {'red_RGBLED': 0.1, 'green_RGBLED': 0.5, 'blue_RGBLED': 0.99}
+
+# Initialize the RGB LED (GPIO pins for red, green, blue)
+rgb_led = RGBLED(red=17, green=27, blue=22)
+
+def eyes_RGB(eyes_status):
+    """Update the RGB LED with new values."""
+    rgb_led.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
+
+def main():
+    """Main function to handle user input and update LED colors."""
+    while True:
+        try:
+            # Display current values
+            print("Current RGB Values:", eyes_RGBLEDs)
+            
+            # Get user input
+            red = float(input("Enter Red value (0-1): "))
+            green = float(input("Enter Green value (0-1): "))
+            blue = float(input("Enter Blue value (0-1): "))
+            
+            # Validate input
+            if 0 <= red <= 1 and 0 <= green <= 1 and 0 <= blue <= 1:
+                eyes_RGBLEDs['red_RGBLED'] = red
+                eyes_RGBLEDs['green_RGBLED'] = green
+                eyes_RGBLEDs['blue_RGBLED'] = blue
+                
+                # Update LED color
+                eyes_RGB(eyes_RGBLEDs)
+            else:
+                print("Please enter values between 0 and 1.")
+            
+            sleep(1)
+        except ValueError:
+            print("Invalid input. Please enter numerical values between 0 and 1.")
+        except KeyboardInterrupt:
+            print("\nExiting program.")
+            rgb_led.off()
+            break
+
+if __name__ == "__main__":
+    main()
