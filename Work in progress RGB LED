@@ -3,12 +3,14 @@ from time import sleep
 
 eyes_RGBLEDs = {'red_RGBLED': 0.1, 'green_RGBLED': 0.5, 'blue_RGBLED': 0.99}
 
-# Initialize the RGB LED (GPIO pins for red, green, blue)
-rgb_led = RGBLED(red=17, green=27, blue=22)
+# Initialize two RGB LEDs (GPIO pins for red, green, blue)
+rgb_led1 = RGBLED(red=17, green=27, blue=22)
+rgb_led2 = RGBLED(red=18, green=23, blue=24)
 
 def eyes_RGB(eyes_status):
-    """Update the RGB LED with new values."""
-    rgb_led.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
+    """Update both RGB LEDs with new values."""
+    rgb_led1.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
+    rgb_led2.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
 
 def main():
     """Main function to handle user input and update LED colors."""
@@ -28,7 +30,7 @@ def main():
                 eyes_RGBLEDs['green_RGBLED'] = green
                 eyes_RGBLEDs['blue_RGBLED'] = blue
                 
-                # Update LED color
+                # Update LED colors
                 eyes_RGB(eyes_RGBLEDs)
             else:
                 print("Please enter values between 0 and 1.")
@@ -38,7 +40,8 @@ def main():
             print("Invalid input. Please enter numerical values between 0 and 1.")
         except KeyboardInterrupt:
             print("\nExiting program.")
-            rgb_led.off()
+            rgb_led1.off()
+            rgb_led2.off()
             break
 
 if __name__ == "__main__":
