@@ -1,0 +1,108 @@
+from gpiozero import LED import RGBLED import Servo
+from time import sleep 
+
+# Assign GPIO pins to LEDs (Modify based on your actual GPIO setup)
+stop_light = {
+    'red_LED': LED(3),   # Red LED on GPIO 3
+    'yellow_LED': LED(4), # Yellow LED on GPIO 4
+    'green_LED': LED(7)   # Green LED on GPIO 7
+}
+eyes_RGBLEDs = {'red_RGBLED': 0.1, 'green_RGBLED': 0.5, 'blue_RGBLED': 0.99}
+
+# Initialize two RGB LEDs (GPIO pins for red, green, blue)
+rgb_led1 = RGBLED(red=16, green=20, blue=21)
+rgb_led2 = RGBLED(red=13, green=19, blue=26)
+
+def test_stop_light():
+  #  """Test function to cycle through the stoplight LEDs."""
+    print("Testing Stop Light LEDs...")
+    for color, led in stop_light.items():
+        print(f"Turning ON {color}")
+        led.on()
+        sleep(1)  # Keep LED on for 1 second
+        print(f"Turning OFF {color}")
+        led.off()
+        sleep(0.5)  # Pause before next LED
+    print("Test Complete.")
+
+def stop_light_control(color):
+   # """Controls the stoplight based on user input."""
+    if color in stop_light:
+        # Turn off all LEDs first
+        for led in stop_light.values():
+            led.off()
+        
+        # Turn on the selected LED
+        stop_light[color].on()
+        print(f"{color} is now ON")
+    else:
+        print("Invalid input. Please enter red_LED, yellow_LED, or green_LED.")
+        
+def eyes_RGB(eyes_status):
+   # """Update both RGB LEDs with new values."""
+    rgb_led1.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
+    rgb_led2.color = (eyes_status['red_RGBLED'], eyes_status['green_RGBLED'], eyes_status['blue_RGBLED'])
+
+def main():
+  #  """Main function to handle user input in a loop."""
+    while True:
+        user_input = input("Enter LED color (red_LED, yellow_LED, green_LED) or 'test' to test LEDs, 'exit' to quit: ").strip().lower()
+        
+        if user_input == 'exit':
+            print("Exiting program...")
+            break
+        elif user_input == 'test':
+            test_stop_light()
+        else:
+            stop_light_control(user_input)
+            
+# """Main function to handle user input and update LED colors."""
+    while True:
+        try:
+            # Display current values
+            print("Current RGB Values:", eyes_RGBLEDs)
+            
+            # Get user input
+            red = float(input("Enter Red value (0-1): "))
+            green = float(input("Enter Green value (0-1): "))
+            blue = float(input("Enter Blue value (0-1): "))
+            
+            # Validate input
+            if 0 <= red <= 1 and 0 <= green <= 1 and 0 <= blue <= 1:
+                eyes_RGBLEDs['red_RGBLED'] = red
+                eyes_RGBLEDs['green_RGBLED'] = green
+                eyes_RGBLEDs['blue_RGBLED'] = blue
+                
+                # Update LED colors
+                eyes_RGB(eyes_RGBLEDs)
+            else:
+                print("Please enter values between 0 and 1.")
+            
+            sleep(1)
+        except ValueError:
+            print("Invalid input. Please enter numerical values between 0 and 1.")
+        except KeyboardInterrupt:
+            print("\nExiting program.")
+            rgb_led1.off()
+            rgb_led2.off()
+            break
+myGPIO=14
+ 
+servo = Servo(myGPIO)
+ 
+while True:
+    servo.mid()
+    print("mid")
+    sleep(0.5)
+    servo.min()
+    print("min")
+    sleep(1)
+    servo.mid()
+    print("mid")
+    sleep(0.5)
+    servo.max()
+    print("max")
+    sleep(1)
+    
+if __name__ == "__main__":
+    main()
