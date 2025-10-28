@@ -19,3 +19,5 @@ resistance = volts / current
 
 # Print result
 print(f"A circuit with a voltage of {volts}V and a current of {current*1000:.0f}mA will require a resistor of {resistance:.0f}{chr(937)}")
+
+#This code calculates what resistor is needed by calculating the voltage and current by dividing them to show what kind of resistor is needed for the circuit
