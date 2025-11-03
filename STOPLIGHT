@@ -1,6 +1,6 @@
 from gpiozero import LED
 from time import sleep
-
+#Code used To mimic a stoplight based on user input with a raspberry pi
 # Assign GPIO pins to LEDs (Modify based on your actual GPIO setup)
 stop_light = {
     'red_LED': LED(17),   # Red LED on GPIO 17
@@ -48,4 +48,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-# Code to micic a stoplight with user input
+
